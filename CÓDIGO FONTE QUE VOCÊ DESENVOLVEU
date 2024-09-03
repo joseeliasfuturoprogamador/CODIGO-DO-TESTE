@@ -1,0 +1,174 @@
+Resposta 1:  SOMA é calculada em cada iteração:
+Iteração	Valor de K	Valor de SOMA
+1	1	1
+2	2	3
+3	3	6
+4	4	10
+5	5	15
+6	6	21
+7	7	28
+8	8	36
+9	9	45
+10	10	55
+11	11	66
+12	12	78
+13	13	91
+
+pós 13 iterações, o valor de K chega a 13, e a soma acumulada em SOMA é 91.
+O loop termina porque K não é mais menor que INDICE (ambos são iguais a 13).
+
+
+
+
+
+
+
+Resposta 2:  function pertenceFibonacci(num) {
+    let a = 0, b = 1;
+    
+    if (num === 0 || num === 1) {
+        return `O número ${num} pertence à sequência de Fibonacci.`;
+    }
+
+    while (b <= num) {
+        if (b === num) {
+            return `O número ${num} pertence à sequência de Fibonacci.`;
+        }
+        [a, b] = [b, a + b]; 
+    }
+
+    return `O número ${num} NÃO pertence à sequência de Fibonacci.`;
+}
+
+// Exemplo de uso
+let numero = parseInt(prompt("Informe um número: "));
+let resultado = pertenceFibonacci(numero);
+alert(resultado);
+
+
+
+Resposta 3 : {
+
+let jsonData = {
+    "faturamentoMensal": [
+        { "dia": 1, "valor": 1000 },
+        { "dia": 2, "valor": 2000 },
+        { "dia": 3, "valor": 1500 },
+        { "dia": 4, "valor": 3000 },
+        { "dia": 5, "valor": 0 },
+        { "dia": 6, "valor": 5000 },
+        { "dia": 7, "valor": 0 },
+        { "dia": 8, "valor": 2500 },
+        { "dia": 9, "valor": 3500 },
+        { "dia": 10, "valor": 4000 },
+        { "dia": 11, "valor": 4500 },
+        { "dia": 12, "valor": 1000 },
+        { "dia": 13, "valor": 7000 },
+        { "dia": 14, "valor": 0 },
+        { "dia": 15, "valor": 3000 },
+        { "dia": 16, "valor": 2500 },
+        { "dia": 17, "valor": 10000 },
+        { "dia": 18, "valor": 500 },
+        { "dia": 19, "valor": 0 },
+        { "dia": 20, "valor": 1500 },
+        { "dia": 21, "valor": 6000 },
+        { "dia": 22, "valor": 8000 },
+        { "dia": 23, "valor": 1000 },
+        { "dia": 24, "valor": 3500 },
+        { "dia": 25, "valor": 2000 },
+        { "dia": 26, "valor": 0 },
+        { "dia": 27, "valor": 5000 },
+        { "dia": 28, "valor": 7000 },
+        { "dia": 29, "valor": 4000 },
+        { "dia": 30, "valor": 6000 }
+    ]
+};
+
+function menorValor(faturamento) {
+    return Math.min(...faturamento.filter(dia => dia.valor > 0).map(dia => dia.valor));
+}
+
+function maiorValor(faturamento) {
+    return Math.max(...faturamento.map(dia => dia.valor));
+}
+
+function mediaMensal(faturamento) {
+    let total = faturamento.reduce((acc, dia) => dia.valor > 0 ? acc + dia.valor : acc, 0);
+    let diasComFaturamento = faturamento.filter(dia => dia.valor > 0).length;
+    return total / diasComFaturamento;
+}
+
+
+
+function diasSuperiorMedia(faturamento) {
+    let media = mediaMensal(faturamento);
+    return faturamento.filter(dia => dia.valor > media).length;
+}
+
+
+let faturamentoMensal = jsonData.faturamentoMensal;
+let menorFaturamento = menorValor(faturamentoMensal);
+let maiorFaturamento = maiorValor(faturamentoMensal);
+let diasAcimaDaMedia = diasSuperiorMedia(faturamentoMensal);
+
+console.log(`Menor valor de faturamento: R$ ${menorFaturamento}`);
+console.log(`Maior valor de faturamento: R$ ${maiorFaturamento}`);
+console.log(`Número de dias com faturamento acima da média: ${diasAcimaDaMedia}`);
+
+
+Menor valor de faturamento: R$ 500
+Maior valor de faturamento: R$ 10000
+Número de dias com faturamento acima da média: 15
+
+
+Resposta 4 : 
+let faturamento = {
+    "SP": 67836.43,
+    "RJ": 36678.66,
+    "MG": 29229.88,
+    "ES": 27165.48,
+    "Outros": 19849.53
+};
+
+function calcularTotal(faturamento) {
+    let total = 0;
+    for (let estado in faturamento) {
+        total += faturamento[estado];
+    }
+    return total;
+}
+
+function calcularPercentuais(faturamento, total) {
+    let percentuais = {};
+    for (let estado in faturamento) {
+        percentuais[estado] = ((faturamento[estado] / total) * 100).toFixed(2);
+    }
+    return percentuais;
+}
+
+let totalFaturamento = calcularTotal(faturamento);
+
+let percentuais = calcularPercentuais(faturamento);
+
+
+
+Resposta 5 : function inverterString(str) {
+    let strInvertida = "";
+    
+    for (let i = str.length - 1; i >= 0; i--) {
+        strInvertida += str[i];
+    }
+    
+    return strInvertida;
+}
+
+let stringOriginal = "exemplo";
+
+let stringInvertida = inverterString(stringOriginal);
+
+console.log("String Original: " + stringOriginal);
+console.log("String Invertida: " + stringInvertida);
+
+
+
+
